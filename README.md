@@ -1,8 +1,13 @@
-# JMK-Project
-JMK-Project for Carleton Coding Bootcamp
+# JMK-Project: Personal assistant
 
-John Blume : jlbuster , Kephane Loemba : KephaneLoemba , Mila Mamat : mila-mamat
+## Team members
+John Blume : https://github.com/jlbuster
 
+Kephane Loemba : https://github.com/KephaneLoemba
+
+Mila Mamat : https://github.com/mila-mamat
+
+## Project details
 Personal assistant application that helps with one's daily life.
 
 Includes daily weather, news headlines, as well as a section for the tasks you wish to complete on any given day.
