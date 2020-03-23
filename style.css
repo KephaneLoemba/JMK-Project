@@ -1,54 +1,54 @@
 /*added by Mila  */
-    .hidden {
-        display:none !important;
-    }
-
-    .displayed {
-        display:block !important;
-    }
-    
-    h3 {
-        position:relative;
-    }
-    h3 button {
-        position:absolute;
-        top:0em;
-        right:0em
-    }
-
-    /* adjust the margins of aside section for different screen size  */
-    @media screen and (min-width: 1200px){
-        /* main{
-            padding-top:20px;
-        } */
-
-        aside>div:not(:first-child) {
-            margin-top:1rem
+    /* header button CSS */
+        .hidden {
+        display: none !important;
+        }
+        .displayed {
+        display: block !important;
         }
 
-    }
-
-    @media screen and (max-width: 639px){
-        aside>div:not(:first-child) {
-            margin-top:1rem
+    /* schedule section CSS */
+        .uk-tab:first-child {
+        padding-left: 0.5rem;
         }
-    }
-
-    @media screen and (min-width: 640px) and (max-width: 1199px) {
-        aside>div:not(:first-child) {
-            margin-left:1.5rem
+        .uk-position-small {
+        margin-top: 17px !important;
         }
-    } 
+        /* seems like UIkit has a bug with position relative, works well if it is covered with a border  */
+        .invisible-border {
+        border: white 0.1px solid;
+        }
 
-    
+        /* adjust the margins of aside section for different screen size  */
+        @media screen and (min-width: 1200px) {
+            aside > div:not(:first-child) {
+                margin-top: 1rem;
+            }
+            .uk-padding {
+                padding: 1rem 2rem;
+            }
+        }
 
-    .a{
-        border:red 1px solid;
-    }
+        @media screen and (max-width: 639px) {
+            aside > div:not(:first-child) {
+                margin-top: 1rem;
+            }
+            .uk-grid-match.uk-grid-small {
+                margin-left: 0px !important;
+            }
+            main,aside {
+                padding: 1px !important;
+            }
+            main > div {
+                padding: 0px !important;
+            }
+        }
+        @media screen and (min-width: 640px) and (max-width: 1199px) {
+            aside > div:not(:first-child) {
+                margin-left: 1.5rem;
+            }
+        }
 
 /* added by John  */
-
-
-
 
 /* added by Kephane */
