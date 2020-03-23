@@ -9,6 +9,8 @@
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
     <link rel="stylesheet" href="./style.css" />
+
+
 </head>
 
 <body>
@@ -16,8 +18,8 @@
     <header class="uk-navbar-container " uk-navbar uk-grid>
         <!-- container for authorization and sign out button  -->
         <div class="uk-navbar-item uk-navbar-left">
-            <button id="authorize_button" class="hidden">Authorize Google Calender</button>
-            <button id="signout_button" class="hidden">Sign Out</button>
+            <button id="authorize_button" class="hidden uk-button-link">Authorize Google Calender</button>
+            <button id="signout_button" class="hidden uk-button-link">Sign Out</button>
         </div>
         <!-- website title container  -->
         <div class="uk-navbar-item uk-navbar-center ">
@@ -25,28 +27,165 @@
         </div>
     </header>
 
-    <div class="uk-grid-match uk-grid-small uk-text-center " uk-grid>
+    <div class="uk-grid-match uk-grid-small " uk-grid>
         <!-- daily schedule container  -->
-        <main class="uk-width-2-3@l">
-            <div class="uk-card uk-card-default uk-card-body">1-3@m</div>
+        <main class="uk-width-2-3@l ">
+            <div class="uk-card-body uk-padding">
+
+                <!-- heading and add event toggle for modal -->
+                <div class="uk-text-center uk-margin-remove uk-position-relative invisible-border">
+                    <!-- This is a button toggling the modal -->
+                    <button class="uk-button uk-button-link uk-position-top-right" type="button"
+                        uk-toggle="target: #event-form"><a uk-icon="icon: plus"></a>Add event
+                    </button>
+                    <h3 class="uk-margin-top">Daily Schedule</h3>
+                </div>
+
+                <!-- This is the modal -->
+                <div id="event-form" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body ">
+                        <form uk-margin>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-event-title"><span
+                                        uk-icon="icon: tag">&nbsp;</span> Event Title</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-event-title" type="text">
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-event-date"><span
+                                        uk-icon="icon: calendar">&nbsp;</span> Event Date<span class="uk-text-muted">
+                                        (If not specified, saved as today)</span></label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-event-date" type="date">
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div><span uk-icon="icon: clock">&nbsp;</span> Event schedule <span
+                                        class="uk-text-muted"> (If not specified, saved as all day event)</span></div>
+                                <label class="uk-form-label" for="form-event-start-time"> Event Start Time </label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-event-start-time" type="time"
+                                        placeholder="9:30 AM">
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-event-end-time">Event End Time <span
+                                        class="uk-text-muted"></label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="form-event-end-time" type="time" placeholder="9:30 AM">
+                                </div>
+                            </div>
+                            <div class="uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close" type="button"
+                                    id="form-cancel-btn">Cancel</button>
+                                <button class="uk-button uk-button-primary" type="button"
+                                    id="form-save-btn">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- date controller bar  -->
+                <div class="uk-container uk-container-expand uk-text-center uk-margin-remove ">
+                    <a href="#" uk-slidenav-previous class=" uk-float-left uk-padding-remove"></a>
+                    <span class="uk-text-bold"> 20/03/2020</span>
+                    <a href="#" uk-slidenav-next class=" uk-float-right uk-padding-remove"></a>
+                </div>
+
+                <!--  panel -->
+                <div class="uk-position-relative uk-margin-small ">
+                    <!-- switcher nav bar  -->
+                    <ul uk-tab="swiping: false" class="uk-tab" uk-switcher="animation: uk-animation-fade">
+                        <li class="uk-active"><a href="#" aria-expanded="true">To-do</a></li>
+                        <li class=""><a href="#" aria-expanded="false">Finished</a></li>
+                    </ul>
+                    <!-- to do event list  -->
+                    <ul class="uk-switcher uk-margin">
+                        <li class="uk-active" id="to-do-list">
+                            <!-- example list  -->
+                            <div
+                                class="uk-card uk-card-default uk-card-body uk-padding-small uk-card-hover uk-position-relative uk-margin-small">
+                                <input type="checkbox" class="a uk-inline uk-text-large">
+                                <p class="uk-inline uk-margin-remove display-event-time"> 9AM - 10AM : </p>
+                                <p class=" uk-inline uk-margin-remove display-event-title">Lorem ipsum dolor, sit amet
+                                    consectetur adipisicing elit. Assumenda eos officiis quis deleniti sed recusandae
+                                    inventore nemo maxime voluptates consectetur </p>
+
+                                <ul class="uk-iconnav uk-position-top-right uk-position-small">
+                                    <li><a href="#" uk-icon="icon: file-edit"></a></li>
+                                    <li><a href="#" uk-icon="icon: trash"></a></li>
+                                </ul>
+                            </div>
+                            <div
+                                class="uk-card uk-card-default uk-card-body uk-padding-small uk-card-hover uk-position-relative uk-margin-small">
+                                <input type="checkbox" class="a uk-inline uk-text-large" >
+                                <p class="uk-inline uk-margin-remove display-event-time"> 9AM - 10AM : </p>
+                                <p class=" uk-inline uk-margin-remove display-event-title">Go to school</p>
+
+                                <ul class="uk-iconnav uk-position-top-right uk-position-small">
+                                    <li><a href="#" uk-icon="icon: file-edit"></a></li>
+                                    <li><a href="#" uk-icon="icon: trash"></a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- finished event list  -->
+                        <li class="" id="finished-list">
+                            <!-- example list  -->
+                            <div
+                                class="uk-card uk-card-default uk-card-body uk-padding-small uk-card-hover uk-position-relative uk-margin-small">
+                                <p class="uk-inline uk-margin-remove display-event-time"> 9AM - 10AM : </p>
+                                <p class=" uk-inline uk-margin-remove display-event-title">Go to school</p>
+                                <ul class="uk-iconnav uk-position-top-right uk-position-small">
+                                    <li><a href="#" uk-icon="icon: refresh"
+                                            uk-tooltip="title: Restore; pos: bottom"></a></li>
+                                </ul>
+                            </div>
+                            <div
+                                class="uk-card uk-card-default uk-card-body uk-padding-small uk-card-hover uk-position-relative uk-margin-small">
+                                <p class="uk-inline uk-margin-remove display-event-time"> 9AM - 10AM : </p>
+                                <p class=" uk-inline uk-margin-remove display-event-title">Lorem ipsum dolor, sit amet
+                                    consectetur adipisicing elit. Assumenda eos officiis quis deleniti sed recusandae
+                                    inventore nemo maxime voluptates consectetur </p>
+                                <ul class="uk-iconnav uk-position-top-right uk-position-small">
+                                    <li><a href="#" uk-icon="icon: refresh"
+                                            uk-tooltip="title: Restore; pos: bottom"></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </main>
 
-        <aside class="uk-width-expand@l uk-grid-match ">
+
+
+
+
+        <aside class="uk-width-expand@l ">
             <!-- weather container  -->
-            <div class="uk-card uk-card-default uk-card-body uk-width-1-1@l uk-width-2-5@m ">
+            <div class="uk-card uk-card-default uk-card-body uk-width-1-1@l uk-width-2-5@s ">
                 <div>Weather :PLEASE ADD YOUR CODE HERE</div>
             </div>
+
+
 
             <!-- news container  -->
             <div class="uk-card uk-card-default uk-card-body uk-width-expand ">
                 <div>news: PLEASE ADD YOUR CODE HERE</div>
             </div>
+
+
+
+
         </aside>
     </div>
 
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
