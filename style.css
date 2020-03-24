@@ -1,11 +1,16 @@
 /*added by Mila  */
     /* header button CSS */
-        .hidden {
-        display: none !important;
-        }
-        .displayed {
-        display: block !important;
-        }
+   #authorization-btns{
+       margin-left:50px !important;
+   }
+   #authorization-btns button{
+    border:none!important;
+    font-size: 1rem;
+    margin-top:45px;
+}
+ #to-do-list div p, #finished-list div p{
+     margin:0px 5px !important;
+ }
 
     /* schedule section CSS */
         .uk-tab:first-child {
@@ -16,7 +21,7 @@
         }
         /* seems like UIkit has a bug with position relative, works well if it is covered with a border  */
         .invisible-border {
-        border: white 0.1px solid;
+        border:white 0.1px solid;
         }
 
         /* adjust the margins of aside section for different screen size  */
