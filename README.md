@@ -16,3 +16,5 @@ Uses UIKit as a css framework.
 Uses Open Weather API for weather data.
 Uses the New York Times API for news headline data.
 
+## Github Pages : 
+Link : https://jlbuster.github.io/JMK-Project/
