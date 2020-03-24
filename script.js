@@ -12,6 +12,7 @@ let dateToRender = moment().format().slice(0, 10);
 
 
 
+
 //added by John
 
 
@@ -20,15 +21,9 @@ let dateToRender = moment().format().slice(0, 10);
 
 
 
-
-
-
-//added by Kephane
-let PositionObject;
-let firstPromise;
-
-
-
+    //added by Kephane
+let PositionObject
+let firstPromise
 
 
 
@@ -314,8 +309,67 @@ function renderCurrentWeather() {
     });
 }
 
+
+
+//Js code by Kephane
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        console.log(position);
+        console.log("its working, my dude");
+        PositionObject = position
+            
+    })
+
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+}
+
+
+function renderCurrentWeather() {
+
+
+    let APIKey = "293cd84e574cf959670f3a3bbd55265b";
+    let thatLat = PositionObject.coords.latitude.toFixed(2);
+    let thatLon = PositionObject.coords.longitude.toFixed(2);
+
+  
+    // Here we are building the URLs we need to query the database
+  
+    let queryURL =
+      "https://api.openweathermap.org/data/2.5/weather?lat=" +
+      thatLat + "&lon=" +
+      thatLon + "&units=imperial&appid=" +
+      APIKey;
+  
+    fetch(queryURL)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+            console.log(data)
+            let temps = data.main.temp;
+
+
+            let currentIcon = document.createElement('img')
+            currentIcon.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
+
+
+            let weatherCard = document.getElementById("weather-div")
+            weatherCard.children[0].innerHTML =
+            "<b>" + "Local weather, " + "</b>" + moment().format(" ha ");
+            weatherCard.children[0].append(currentIcon)
+            weatherCard.children[1].innerHTML = "<b>Temperature: </b>" + temps.toFixed(2) + '°F'
+            weatherCard.children[2].innerHTML = "<b>Humidity: </b>" + data.main.humidity + '%' 
+            weatherCard.children[3].innerHTML = "<b>Wind speed: </b>" + data.wind.speed + ' MPH'
+  
+      })
+}
+
+
+
 getLocation();
 
-document
-  .getElementById("forecast-button")
-  .addEventListener("click", renderCurrentWeather);
+document.getElementById("forecast-button").addEventListener("click", renderCurrentWeather);
+
