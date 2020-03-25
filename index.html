@@ -29,14 +29,14 @@
 
     <div class="uk-grid-match uk-grid-small " uk-grid>
         <!-- daily schedule container  -->
-        <main class="uk-width-2-3@l ">
+        <main class="uk-width-3-5@l ">
             <div class="uk-card-body uk-padding">
 
                 <!-- heading and add event toggle for modal -->
                 <div class="uk-text-center uk-margin-remove uk-position-relative invisible-border">
                     <!-- This is a button toggling the modal -->
                     <button class="uk-button uk-button-link uk-position-top-right" type="button"
-                        uk-toggle="target: #event-form"><a uk-icon="icon: plus"></a>Add event
+                        uk-toggle="target: #event-form"><a uk-icon="icon: plus; ratio: 0.7"> </a> Add event
                     </button>
                     <h3 class="uk-margin-top">Daily Schedule</h3>
                 </div>
@@ -77,9 +77,8 @@
                                 </div>
                             </div>
                             <div class="uk-text-right">
-                                <button class="uk-button uk-button-default uk-modal-close" type="button"
-                                    id="form-cancel-btn">Cancel</button>
-                                <button class="uk-button uk-button-primary" type="button"
+                                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary uk-modal-close" type="button"
                                     id="form-save-btn">Save</button>
                             </div>
                         </form>
@@ -102,14 +101,12 @@
                     </ul>
                     <!-- to do event list  -->
                     <ul class="uk-switcher uk-margin">
-                        <!-- to-do list  -->
-                        <li class="uk-active" id="to-do-list"></li>
-
-                        <!-- finished event list  -->
-                        <li class="" id="finished-list">
-                        
-
+                       <!-- to-do list  -->
+                       <li class="uk-active" id="to-do-list">
+                            <p>Please authorize google calender to get your schedule</p>
                         </li>
+                    <!-- finished event list  -->
+                        <li class="" id="finished-list"></li>
                     </ul>
                 </div>
             </div>
@@ -132,7 +129,7 @@
             <!-- news container  -->
             <div class='uk-card uk-card-default uk-card-body uk-width-expand'>
 
-                <h1 class="">Top Stories</h1>
+                <h3 class="">Top Stories</h3>
 
                 <dl id='news' class='news uk-description-list uk-description-list-divider'>
 
@@ -164,6 +161,7 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
     <script src="./script.js"></script>
     <script async defer src="https://apis.google.com/js/api.js"
     onload="this.onload=function(){};handleClientLoad()"

@@ -6,8 +6,10 @@ let signoutButton = document.getElementById("signout_button");
 let toDoList = document.getElementById("to-do-list");
 let finishedList = document.getElementById("finished-list");
 //search and render events based on the date requested
-let dayChange = 0 
+let dayChange = 0
 let dateToRender = moment().format().slice(0, 10);
+let todaysDate = moment().format().slice(0, 10);
+
 
 
 
@@ -106,12 +108,13 @@ function listEvents() {
     })
     .then(function (response) {
       //render the date
-      document.getElementById("date-to-render").textContent= dateToRender;
+      document.getElementById("date-to-render").textContent = dateToRender;
 
       let eventsToRender = response.result.items;
+      console.log(eventsToRender)
       //clean up to do list before rendering events
       toDoList.innerHTML = "";
-      finishedList.innerHTML=""
+      finishedList.innerHTML = ""
       if (eventsToRender.length > 0) {
         for (i = 0; i < eventsToRender.length; i++) {
           let event = eventsToRender[i];
@@ -123,7 +126,7 @@ function listEvents() {
 
           // check if the event is in the past or already marked finished
           let isFinished = isFinishedEvent(event);
-        
+
           // add the event container to to-do-list or fiished-list accordingly
           if (isFinished) {
             //append event container to to-do-list
@@ -143,9 +146,9 @@ function listEvents() {
             toDoList.append(eventContainer);
           }
         }
-      } 
+      }
       // check if the to-do-list is empty and add notification if yes
-      if(toDoList.textContent==""){
+      if (toDoList.textContent == "") {
         toDoList.append("No events to do.");
       }
     });
@@ -164,7 +167,7 @@ function addEventInfo(event, eventContainer) {
   eventContainer.childNodes[2].textContent = event.summary;
 }
 
-function isFinishedEvent(event){
+function isFinishedEvent(event) {
   let isFinished = false;
   if (event.end.dateTime) {
     let eventEndHour = event.end.dateTime.slice(11, 16);
@@ -177,9 +180,8 @@ function isFinishedEvent(event){
   }
 
   //if the events is in the future, it is not finished
-  let todaysDate = moment().format().slice(0, 10);
   if (todaysDate < dateToRender) {
-    isFinished=false;
+    isFinished = false;
   }
   return isFinished
 }
@@ -228,22 +230,75 @@ function moveToFinishedList(eventContainer) {
 }
 
 //add event listener to previous btn and next btn
-document.getElementById("previous-day").addEventListener("click",function(){
+document.getElementById("previous-day").addEventListener("click", function () {
   dayChange--;
-  dateToRender = moment().add(dayChange, 'days').format().slice(0,10)
+  dateToRender = moment().add(dayChange, 'days').format().slice(0, 10)
   console.log(dateToRender);
   handleClientLoad();
 
 })
-document.getElementById("next-day").addEventListener("click",function(){
+document.getElementById("next-day").addEventListener("click", function () {
   dayChange++;
-  dateToRender = moment().add(dayChange, 'days').format().slice(0,10)
+  dateToRender = moment().add(dayChange, 'days').format().slice(0, 10)
   console.log(dateToRender);
   handleClientLoad();
 })
 
+// add event listener to [add event] save btn
+document.getElementById("form-save-btn").addEventListener("click", eventChange)
 
+function eventChange() {
+  gapi.client
+    .init({
+      apiKey: "AIzaSyAOuEz41BrAV-boYRPZAkNXvs6K0VdnVNc",
+      clientId: "749857904089-q5qqo9bp0518jpmis6m1h8eod6904fva.apps.googleusercontent.com",
+      discoveryDocs: [
+        "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"
+      ],
+      scope: "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.events"
+    })
+    .then(
+      addNewEvents()
+    );
+}
 
+function addNewEvents() {
+  gapi.client.calendar.events.list({
+    'calendarId': 'primary',
+  }).then(function (response) {
+    let eventTitle = document.getElementById("form-event-title").value;
+    let eventDate = document.getElementById("form-event-date").value || todaysDate;
+    let eventStart = document.getElementById("form-event-start-time").value;
+    let eventEnd = document.getElementById("form-event-end-time").value;
+    let event = {
+      'summary': eventTitle,
+    };
+    if (eventStart && eventEnd) {
+      event.start = {
+        'dateTime': eventDate + 'T' + eventStart + ":00-04:00"
+      }
+      event.end = {
+        'dateTime': eventDate + 'T' + eventEnd + ":00-04:00"
+      }
+    } else {
+      event.start = {
+        'date': eventDate
+      }
+      event.end = {
+        'date': moment(eventDate).add(1, "days").format().slice(0, 10)
+      }
+    }
+    console.log(event)
+
+    let request = gapi.client.calendar.events.insert({
+      'calendarId': 'primary',
+      'resource': event
+    });
+    request.execute(function(event) {
+      handleClientLoad();
+    });
+  });
+}
 
 
 
