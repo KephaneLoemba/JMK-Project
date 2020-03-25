@@ -15,10 +15,11 @@ let dateToRender = moment().format().slice(0, 10);
 
 //added by John
 
-
-
-
-
+let artLink1 = document.getElementById('artLink1')
+let artLink2 = document.getElementById('artLink2')
+let artLink3 = document.getElementById('artLink3')
+let artLink4 = document.getElementById('artLink4')
+let artLink5 = document.getElementById('artLink5')
 
 
     //added by Kephane
@@ -340,7 +341,7 @@ function renderCurrentWeather() {
     let queryURL =
       "https://api.openweathermap.org/data/2.5/weather?lat=" +
       thatLat + "&lon=" +
-      thatLon + "&units=imperial&appid=" +
+      thatLon + "&units=metric&appid=" +
       APIKey;
   
     fetch(queryURL)
@@ -360,9 +361,9 @@ function renderCurrentWeather() {
             weatherCard.children[0].innerHTML =
             "<b>" + "Local weather, " + "</b>" + moment().format(" ha ");
             weatherCard.children[0].append(currentIcon)
-            weatherCard.children[1].innerHTML = "<b>Temperature: </b>" + temps.toFixed(2) + '°F'
+            weatherCard.children[1].innerHTML = "<b>Temperature: </b>" + temps.toFixed(2) + '°C'
             weatherCard.children[2].innerHTML = "<b>Humidity: </b>" + data.main.humidity + '%' 
-            weatherCard.children[3].innerHTML = "<b>Wind speed: </b>" + data.wind.speed + ' MPH'
+            weatherCard.children[3].innerHTML = "<b>Wind speed: </b>" + data.wind.speed + ' KM/H'
   
       })
 }
@@ -372,4 +373,44 @@ function renderCurrentWeather() {
 getLocation();
 
 document.getElementById("forecast-button").addEventListener("click", renderCurrentWeather);
+
+
+//JS added by John (news section)
+
+function displayNewsInfo () {
+  let url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=3YES3qufvW0LVKvA4mQ1B1dqtjLm93QY`
+
+  fetch(url)
+      .then(function(result) {
+          return result.json()
+      })
+      .then(function(news) {
+
+          let newsBox = document.getElementById('news')
+          console.log(news)
+
+              //Title and Link for 1st article
+              artLink1.textContent = news.results[0].title
+              artLink1.href = news.results[0].url
+
+              //Title and Link for 2nd article
+              artLink2.textContent = news.results[1].title
+              artLink2.href = news.results[1].url
+
+              //Title and Link for 3rd article
+              artLink3.textContent = news.results[2].title
+              artLink3.href = news.results[2].url
+
+              //Title and Link for 4th article
+              artLink4.textContent = news.results[3].title
+              artLink4.href = news.results[3].url
+          
+              //Title and Link for 5th article
+              artLink5.textContent = news.results[4].title
+              artLink5.href = news.results[4].url
+          
+      })
+}
+
+displayNewsInfo()
 
