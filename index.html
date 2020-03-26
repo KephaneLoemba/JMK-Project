@@ -163,8 +163,11 @@
                 <p></p>
                 <p></p>
                 <p></p>
-                <button class="uk-button uk-button-primary" id="forecast-button" uk-parallax="border-color: blue"><span
-                        uk-icon="icon: location"></span></button>
+
+                <div class="uk-animation-fast uk-card uk-card-hover uk-card-default uk-position-top-right uk-position-small uk-padding-remove" id="button-card">
+                    <button class="uk-button uk-button-primary uk-margins-remove" id="forecast-button" uk-parallax="border-color: blue"><span uk-icon="icon: location" id="forecast-button-icon"></span></button>
+                </div>
+                <p class="uk-animation-shake uk-text-lead uk-text-large uk-text-muted " style="display: block;" id="location-instructions">Please "<i>Allow location</i>" for weather tool!</p>
             </div>
 
 

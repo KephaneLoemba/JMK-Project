@@ -345,6 +345,7 @@ function preFillEventInfo(eventContainer) {
 
 
 
+
 function editEvent() {
   gapi.client
     .init({
@@ -420,6 +421,7 @@ function deleteEvent() {
     });
 }
 
+
 function markEventFinished() {
   gapi.client
     .init({
@@ -468,44 +470,70 @@ function getLocation() {
 
 function renderCurrentWeather() {
 
+    let buttonCard = document.getElementById("button-card")
+    buttonCard.classList.add("uk-animation-scale-down");
+    setTimeout(function() {
+      buttonCard.classList.remove("uk-animation-scale-down");
+    },90) 
 
-    let APIKey = "293cd84e574cf959670f3a3bbd55265b";
-    let thatLat = PositionObject.coords.latitude.toFixed(2);
-    let thatLon = PositionObject.coords.longitude.toFixed(2);
+    hideLocationInstructions();
+    if (PositionObject) {
 
-  
-    // Here we are building the URLs we need to query the database
-  
-    let queryURL =
-      "https://api.openweathermap.org/data/2.5/weather?lat=" +
-      thatLat + "&lon=" +
-      thatLon + "&units=metric&appid=" +
-      APIKey;
-  
-    fetch(queryURL)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-            console.log(data)
-            let temps = data.main.temp;
+    
+      let APIKey = "293cd84e574cf959670f3a3bbd55265b";
+      let thatLat = PositionObject.coords.latitude.toFixed(2);
+      let thatLon = PositionObject.coords.longitude.toFixed(2);
+
+    
+      // Here we are building the URLs we need to query the database
+    
+      let queryURL =
+        "https://api.openweathermap.org/data/2.5/weather?lat=" +
+        thatLat + "&lon=" +
+        thatLon + "&units=metric&appid=" +
+        APIKey;
+    
+      fetch(queryURL)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+              console.log(data)
+              let temps = data.main.temp;
 
 
-            let currentIcon = document.createElement('img')
-            currentIcon.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
+              let currentIcon = document.createElement('img')
+              currentIcon.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
 
 
-            let weatherCard = document.getElementById("weather-div")
-            weatherCard.children[0].innerHTML =
-            "<b>" + "Local weather, " + "</b>" + moment().format(" ha ");
-            weatherCard.children[0].append(currentIcon)
-            weatherCard.children[1].innerHTML = "<b>Temperature: </b>" + temps.toFixed(2) + '°C'
-            weatherCard.children[2].innerHTML = "<b>Humidity: </b>" + data.main.humidity + '%' 
-            weatherCard.children[3].innerHTML = "<b>Wind speed: </b>" + data.wind.speed + ' KM/H'
-  
-      })
+              let weatherCard = document.getElementById("weather-div")
+              weatherCard.children[0].innerHTML =
+              "<b>" + "Local weather, " + "</b>" + moment().format(" ha ");
+              weatherCard.children[0].append(currentIcon)
+              weatherCard.children[1].innerHTML = "<b>Temperature: </b>" + temps.toFixed(2) + '°C'
+              weatherCard.children[2].innerHTML = "<b>Humidity: </b>" + data.main.humidity + '%' 
+              weatherCard.children[3].innerHTML = "<b>Wind speed: </b>" + data.wind.speed + ' KM/H'
+    
+        })
+    }    
 }
 
+function hideLocationInstructions() {
+    let weatherMessage = document.getElementById("location-instructions")
+    let forecastButtonIcon = document.getElementById("forecast-button-icon")
+    if (PositionObject) {
+      weatherMessage.style.display = "none";
+      forecastButtonIcon.setAttribute("uk-icon", "icon: refresh");
+      
+    } else {
+        weatherMessage.classList.remove("uk-animation-shake");
+        weatherMessage.style.display = "block";
+        setTimeout(function() {
+          weatherMessage.classList.add("uk-animation-shake");
+        },1)
+        forecastButtonIcon.setAttribute("uk-icon", "icon: location");
+    }
+}
 
 
 getLocation();
