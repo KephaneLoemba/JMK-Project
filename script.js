@@ -14,8 +14,6 @@ let eventID = "";
 
 
 
-
-
 //added by John
 
 let artLink1 = document.getElementById('artLink1')
@@ -25,22 +23,12 @@ let artLink4 = document.getElementById('artLink4')
 let artLink5 = document.getElementById('artLink5')
 
 
-    //added by Kephane
+//added by Kephane
 let PositionObject
 let firstPromise
 
 
 
-let artLink1 = document.getElementById("artLink1");
-let artLink2 = document.getElementById("artLink2");
-let artLink3 = document.getElementById("artLink3");
-let artLink4 = document.getElementById("artLink4");
-let artLink5 = document.getElementById("artLink5");
-
-
-//added by Kephane
-let PositionObject;
-let firstPromise;
 
 //js code by Mila
 // On load, called to load the auth2 library and API client library.
@@ -454,85 +442,85 @@ function markEventFinished() {
 
 //Js code by Kephane
 function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-        console.log(position);
-        console.log("its working, my dude");
-        PositionObject = position
-            
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log(position);
+      console.log("its working, my dude");
+      PositionObject = position
+
     })
 
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
 }
 
 
 function renderCurrentWeather() {
 
-    let buttonCard = document.getElementById("button-card")
-    buttonCard.classList.add("uk-animation-scale-down");
-    setTimeout(function() {
-      buttonCard.classList.remove("uk-animation-scale-down");
-    },90) 
+  let buttonCard = document.getElementById("button-card")
+  buttonCard.classList.add("uk-animation-scale-down");
+  setTimeout(function () {
+    buttonCard.classList.remove("uk-animation-scale-down");
+  }, 90)
 
-    hideLocationInstructions();
-    if (PositionObject) {
-
-    
-      let APIKey = "293cd84e574cf959670f3a3bbd55265b";
-      let thatLat = PositionObject.coords.latitude.toFixed(2);
-      let thatLon = PositionObject.coords.longitude.toFixed(2);
-
-    
-      // Here we are building the URLs we need to query the database
-    
-      let queryURL =
-        "https://api.openweathermap.org/data/2.5/weather?lat=" +
-        thatLat + "&lon=" +
-        thatLon + "&units=metric&appid=" +
-        APIKey;
-    
-      fetch(queryURL)
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(data) {
-              console.log(data)
-              let temps = data.main.temp;
+  hideLocationInstructions();
+  if (PositionObject) {
 
 
-              let currentIcon = document.createElement('img')
-              currentIcon.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
+    let APIKey = "293cd84e574cf959670f3a3bbd55265b";
+    let thatLat = PositionObject.coords.latitude.toFixed(2);
+    let thatLon = PositionObject.coords.longitude.toFixed(2);
 
 
-              let weatherCard = document.getElementById("weather-div")
-              weatherCard.children[0].innerHTML =
-              "<b>" + "Local weather, " + "</b>" + moment().format(" ha ");
-              weatherCard.children[0].append(currentIcon)
-              weatherCard.children[1].innerHTML = "<b>Temperature: </b>" + temps.toFixed(2) + '°C'
-              weatherCard.children[2].innerHTML = "<b>Humidity: </b>" + data.main.humidity + '%' 
-              weatherCard.children[3].innerHTML = "<b>Wind speed: </b>" + data.wind.speed + ' KM/H'
-    
-        })
-    }    
+    // Here we are building the URLs we need to query the database
+
+    let queryURL =
+      "https://api.openweathermap.org/data/2.5/weather?lat=" +
+      thatLat + "&lon=" +
+      thatLon + "&units=metric&appid=" +
+      APIKey;
+
+    fetch(queryURL)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data)
+        let temps = data.main.temp;
+
+
+        let currentIcon = document.createElement('img')
+        currentIcon.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png"
+
+
+        let weatherCard = document.getElementById("weather-div")
+        weatherCard.children[0].innerHTML =
+          "<b>" + "Local weather, " + "</b>" + moment().format(" ha ");
+        weatherCard.children[0].append(currentIcon)
+        weatherCard.children[1].innerHTML = "<b>Temperature: </b>" + temps.toFixed(2) + '°C'
+        weatherCard.children[2].innerHTML = "<b>Humidity: </b>" + data.main.humidity + '%'
+        weatherCard.children[3].innerHTML = "<b>Wind speed: </b>" + data.wind.speed + ' KM/H'
+
+      })
+  }
 }
 
 function hideLocationInstructions() {
-    let weatherMessage = document.getElementById("location-instructions")
-    let forecastButtonIcon = document.getElementById("forecast-button-icon")
-    if (PositionObject) {
-      weatherMessage.style.display = "none";
-      forecastButtonIcon.setAttribute("uk-icon", "icon: refresh");
-      
-    } else {
-        weatherMessage.classList.remove("uk-animation-shake");
-        weatherMessage.style.display = "block";
-        setTimeout(function() {
-          weatherMessage.classList.add("uk-animation-shake");
-        },1)
-        forecastButtonIcon.setAttribute("uk-icon", "icon: location");
-    }
+  let weatherMessage = document.getElementById("location-instructions")
+  let forecastButtonIcon = document.getElementById("forecast-button-icon")
+  if (PositionObject) {
+    weatherMessage.style.display = "none";
+    forecastButtonIcon.setAttribute("uk-icon", "icon: refresh");
+
+  } else {
+    weatherMessage.classList.remove("uk-animation-shake");
+    weatherMessage.style.display = "block";
+    setTimeout(function () {
+      weatherMessage.classList.add("uk-animation-shake");
+    }, 1)
+    forecastButtonIcon.setAttribute("uk-icon", "icon: location");
+  }
 }
 
 
@@ -544,40 +532,39 @@ document.getElementById("forecast-button").addEventListener("click", renderCurre
 
 //JS added by John (news section)
 
-function displayNewsInfo () {
+function displayNewsInfo() {
   let url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=3YES3qufvW0LVKvA4mQ1B1dqtjLm93QY`
 
   fetch(url)
-      .then(function(result) {
-          return result.json()
-      })
-      .then(function(news) {
+    .then(function (result) {
+      return result.json()
+    })
+    .then(function (news) {
 
-          let newsBox = document.getElementById('news')
-          console.log(news)
+      let newsBox = document.getElementById('news')
+      console.log(news)
 
-              //Title and Link for 1st article
-              artLink1.textContent = news.results[0].title
-              artLink1.href = news.results[0].url
+      //Title and Link for 1st article
+      artLink1.textContent = news.results[0].title
+      artLink1.href = news.results[0].url
 
-              //Title and Link for 2nd article
-              artLink2.textContent = news.results[1].title
-              artLink2.href = news.results[1].url
+      //Title and Link for 2nd article
+      artLink2.textContent = news.results[1].title
+      artLink2.href = news.results[1].url
 
-              //Title and Link for 3rd article
-              artLink3.textContent = news.results[2].title
-              artLink3.href = news.results[2].url
+      //Title and Link for 3rd article
+      artLink3.textContent = news.results[2].title
+      artLink3.href = news.results[2].url
 
-              //Title and Link for 4th article
-              artLink4.textContent = news.results[3].title
-              artLink4.href = news.results[3].url
-          
-              //Title and Link for 5th article
-              artLink5.textContent = news.results[4].title
-              artLink5.href = news.results[4].url
-          
-      })
+      //Title and Link for 4th article
+      artLink4.textContent = news.results[3].title
+      artLink4.href = news.results[3].url
+
+      //Title and Link for 5th article
+      artLink5.textContent = news.results[4].title
+      artLink5.href = news.results[4].url
+
+    })
 }
 
 displayNewsInfo()
-
