@@ -12,6 +12,12 @@
      margin:0px 5px !important;
  }
 
+ #to-do-count, #finished-count {
+     margin:0px 5px !important;
+     font-size:0.7rem !important;
+     height: 18px !important;
+     min-width:18px;
+ }
     /* schedule section CSS */
         .uk-tab:first-child {
         padding-left: 0.5rem;
