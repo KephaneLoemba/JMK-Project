@@ -31,16 +31,6 @@ let firstPromise
 
 
 
-let artLink1 = document.getElementById("artLink1");
-let artLink2 = document.getElementById("artLink2");
-let artLink3 = document.getElementById("artLink3");
-let artLink4 = document.getElementById("artLink4");
-let artLink5 = document.getElementById("artLink5");
-
-
-//added by Kephane
-let PositionObject;
-let firstPromise;
 
 //js code by Mila
 // On load, called to load the auth2 library and API client library.
