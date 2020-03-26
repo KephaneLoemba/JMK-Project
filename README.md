@@ -18,3 +18,4 @@ Uses the New York Times API for news headline data.
 
 ## Github Pages : 
 Link : https://jlbuster.github.io/JMK-Project/
+
