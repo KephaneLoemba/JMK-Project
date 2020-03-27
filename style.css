@@ -1,64 +1,178 @@
 /*added by Mila  */
-    /* header button CSS */
-   #authorization-btns{
-       margin-left:50px !important;
-   }
-   #authorization-btns button{
-    border:none!important;
-    font-size: 1rem;
-    margin-top:45px;
+/* header button CSS */
+
+
+body {
+    background-color: #FCF6F5FF;
 }
- #to-do-list div p, #finished-list div p{
-     margin:0px 5px !important;
- }
 
- #to-do-count, #finished-count {
-     margin:0px 5px !important;
-     font-size:0.7rem !important;
-     height: 18px !important;
-     min-width:18px;
- }
-    /* schedule section CSS */
-        .uk-tab:first-child {
-        padding-left: 0.5rem;
-        }
-        .uk-position-small {
-        margin-top: 17px !important;
-        }
-        /* seems like UIkit has a bug with position relative, works well if it is covered with a border  */
-        .invisible-border {
-        border:white 0.1px solid;
-        }
+#authorization-btns {
+    margin-left: 20px !important;
+    padding: 0px;
+}
 
-        /* adjust the margins of aside section for different screen size  */
-        @media screen and (min-width: 1200px) {
-            aside > div:not(:first-child) {
-                margin-top: 1rem;
-            }
-            .uk-padding {
-                padding: 1rem 2rem;
-            }
-        }
+#authorization-btns button {
+    border: none !important;
+    font-size: 1rem;
+    margin-top: 55px !important;
+    color: white !important
+}
 
-        @media screen and (max-width: 639px) {
-            aside > div:not(:first-child) {
-                margin-top: 1rem;
-            }
-            .uk-grid-match.uk-grid-small {
-                margin-left: 0px !important;
-            }
-            main,aside {
-                padding: 1px !important;
-            }
-            main > div {
-                padding: 0px !important;
-            }
-        }
-        @media screen and (min-width: 640px) and (max-width: 1199px) {
-            aside > div:not(:first-child) {
-                margin-left: 1.5rem;
-            }
-        }
+#to-do-list .uk-card,
+#finished-list .uk-card {
+    margin-bottom: 15px !important;
+}
+
+#to-do-list div p,
+#finished-list div p {
+    margin: 0px 5px !important;
+}
+
+#to-do-count,
+#finished-count {
+    margin: 0px 5px !important;
+    font-size: 0.7rem !important;
+    height: 18px !important;
+    min-width: 18px;
+}
+
+header {
+    padding: 10px 0px !important;
+    background-color: #89ABE3FF !important;
+
+}
+
+h1,
+h3 {
+
+    font-family: 'Bitter', serif !important;
+}
+
+h1 {
+    color: #FCF6F5FF !important;
+}
+
+aside>div {
+    padding-top: 30px !important;
+    padding-bottom: 20px !important;
+}
+
+#weather-div button {
+    padding: 0px 10px !important;
+    min-height: 25px !important;
+}
+
+.uk-card,
+.rounded {
+    border-radius: 15px !important;
+}
+
+main {
+    font-size: 1.1rem;
+}
+
+main>div {
+    padding: 16px 0px !important;
+}
+
+aside {
+    margin-right: 20px !important;
+    padding-left: 0px !important;
+}
+
+.uk-grid {
+    margin-left: 0px;
+}
+
+#button-card {
+    margin-top: 10px !important;
+}
+
+.iconStyle {
+    margin-top: -3px;
+}
+
+/* schedule section CSS */
+.uk-tab:first-child {
+    padding-left: 0.5rem;
+}
+
+.uk-position-small {
+    margin-top: 17px !important;
+}
+
+/* seems like UIkit has a bug with position relative, works well if it is covered with a border  */
+.invisible-border {
+    border: #FCF6F5FF 0.1px solid;
+}
+
+/* adjust the margins of aside section for different screen size  */
+@media screen and (min-width: 1200px) {
+    aside>div:not(:first-child) {
+        margin-top: 1rem;
+    }
+
+    .uk-padding {
+        padding: 1rem 2rem;
+    }
+
+    main {
+        padding: 0px 40px 0px 20px !important;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    aside>div:not(:first-child) {
+        margin-top: 1rem;
+    }
+
+    .uk-grid-match.uk-grid-small {
+        margin-left: 0px !important;
+    }
+
+    main {
+        margin-top: 20px !important;
+        min-height: 400px;
+    }
+
+    aside {
+        margin-right: 0px !important
+    }
+
+    main,
+    aside {
+        padding: 1px !important;
+    }
+
+    main>div {
+        padding: 10px 0px !important;
+    }
+
+    #authorization-btns {
+        max-width: 30px;
+    }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1199px) {
+
+    aside,
+    main {
+        margin: 5px 20px !important;
+        padding: 0px !important
+    }
+
+    aside>div {
+        margin-bottom: 0px !important
+    }
+
+    aside>div:not(:first-child) {
+        margin-left: 1.5rem;
+    }
+
+    aside>div.uk-card {
+        padding-top: 50px !important;
+    }
+}
 
 /* added by John  */
 

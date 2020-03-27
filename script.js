@@ -496,11 +496,11 @@ function renderCurrentWeather() {
 
         let weatherCard = document.getElementById("weather-div")
         weatherCard.children[0].innerHTML =
-          "<b>" + "Local weather, " + "</b>" + moment().format(" ha ");
+          "Local weather, " + moment().format(" ha ");
         weatherCard.children[0].append(currentIcon)
-        weatherCard.children[1].innerHTML = "<b>Temperature: </b>" + temps.toFixed(2) + '°C'
-        weatherCard.children[2].innerHTML = "<b>Humidity: </b>" + data.main.humidity + '%'
-        weatherCard.children[3].innerHTML = "<b>Wind speed: </b>" + data.wind.speed + ' KM/H'
+        weatherCard.children[1].innerHTML = "Temperature: " + temps.toFixed(2) + '°C'
+        weatherCard.children[2].innerHTML = "Humidity: " + data.main.humidity + '%'
+        weatherCard.children[3].innerHTML = "Wind speed: " + data.wind.speed + ' KM/H'
 
       })
   }
