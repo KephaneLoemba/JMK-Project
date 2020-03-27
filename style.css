@@ -3,7 +3,7 @@
 
 
 body {
-    background-color: #FCF6F5FF;
+    background-color: #f7f8fa;
 }
 
 #authorization-btns {
@@ -38,7 +38,7 @@ body {
 
 header {
     padding: 10px 0px !important;
-    background-color: #89ABE3FF !important;
+    background-color: #5d80b6 !important;
 
 }
 
@@ -49,7 +49,7 @@ h3 {
 }
 
 h1 {
-    color: #FCF6F5FF !important;
+    color: white!important;
 }
 
 aside>div {
