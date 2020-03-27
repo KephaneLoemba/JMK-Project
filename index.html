@@ -18,7 +18,7 @@
     <header class="uk-navbar-container " uk-navbar uk-grid>
         <!-- container for authorization and sign out button  -->
         <div class="uk-navbar-item uk-navbar-left" id="authorization-btns">
-            <button id="authorize_button" class="uk-button-link">Authorize Google Calender</button>
+            <button id="authorize_button" class="uk-button-link">Sign In</button>
             <button id="signout_button" class="uk-button-link" style="display:none">Sign Out</button>
         </div>
         <!-- website title container  -->
@@ -28,6 +28,7 @@
     </header>
 
     <div class="uk-grid-match uk-grid-small " uk-grid>
+
         <!-- daily schedule container  -->
         <main class="uk-width-3-5@l ">
             <div class="uk-card-body uk-padding">
@@ -42,14 +43,14 @@
                 </div>
 
                 <!-- This is the modal -->
-                <div id="event-form" uk-modal>
-                    <div class="uk-modal-dialog uk-modal-body ">
+                <div id="event-form" uk-modal class="rounded">
+                    <div class="uk-modal-dialog uk-modal-body rounded">
                         <form uk-margin>
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-event-title"><span
                                         uk-icon="icon: tag">&nbsp;</span> Event Title</label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="form-event-title" type="text">
+                                    <input class="uk-input rounded" id="form-event-title" type="text">
                                 </div>
                             </div>
                             <div class="uk-margin">
@@ -57,7 +58,7 @@
                                         uk-icon="icon: calendar">&nbsp;</span> Event Date<span class="uk-text-muted">
                                         (If not specified, saved as current date displayed)</span></label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="form-event-date" type="date">
+                                    <input class="uk-input rounded" id="form-event-date" type="date">
                                 </div>
                             </div>
                             <div><span uk-icon="icon: clock">&nbsp;</span> Event schedule <span class="uk-text-muted">
@@ -65,7 +66,7 @@
                             <div class="uk-margin uk-width-1-3 uk-inline">
                                 <label class="uk-form-label" for="form-event-start-time"> Event Start Time </label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="form-event-start-time" type="text"
+                                    <input class="uk-input rounded" id="form-event-start-time" type="text"
                                         placeholder="e.g,14:30">
                                 </div>
                             </div>
@@ -73,13 +74,14 @@
                                 <label class="uk-form-label" for="form-event-end-time">Event End Time <span
                                         class="uk-text-muted"></label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="form-event-end-time" type="text"
+                                    <input class="uk-input rounded" id="form-event-end-time" type="text"
                                         placeholder="e.g.,16:00 ">
                                 </div>
                             </div>
                             <div class="uk-text-right">
-                                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                                <button class="uk-button uk-button-primary uk-modal-close" type="button"
+                                <button class="uk-button uk-button-default uk-modal-close rounded"
+                                    type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary uk-modal-close rounded" type="button"
                                     id="form-save-btn">Save</button>
                             </div>
                         </form>
@@ -113,94 +115,120 @@
                     </ul>
                 </div>
             </div>
-        </main>
-
-        <!-- This is the modal -->
-        <div id="event-edit-modal" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body ">
-                <form uk-margin>
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="event-edit-title"><span uk-icon="icon: tag">&nbsp;</span>
-                            Event Title</label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="event-edit-title" type="text">
+            <!-- This is the modal for edit modal-->
+            <div id="event-edit-modal" uk-modal class="rounded">
+                <div class="uk-modal-dialog uk-modal-body rounded">
+                    <form uk-margin>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="event-edit-title"><span uk-icon="icon: tag">&nbsp;</span>
+                                Event Title</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input rounded" id="event-edit-title" type="text">
+                            </div>
                         </div>
-                    </div>
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="event-edit-date"><span uk-icon="icon: calendar">&nbsp;</span>
-                            Event Date</span></label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="event-edit-date" type="date">
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="event-edit-date"><span
+                                    uk-icon="icon: calendar">&nbsp;</span>
+                                Event Date</span></label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input rounded" id="event-edit-date" type="date">
+                            </div>
                         </div>
-                    </div>
-                    <div><span uk-icon="icon: clock">&nbsp;</span> Event schedule <span class="uk-text-muted"> </div>
-                    <div class="uk-margin uk-width-1-3 uk-inline">
-                        <label class="uk-form-label" for="event-edit-start-time"> Event Start Time </label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="event-edit-start-time" type="text">
+                        <div><span uk-icon="icon: clock">&nbsp;</span> Event schedule <span class="uk-text-muted">
                         </div>
-                    </div>
-                    <div class="uk-margin uk-width-1-3 uk-inline uk-margin-left">
-                        <label class="uk-form-label" for="event-edit-end-time">Event End Time <span
-                                class="uk-text-muted"></label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="event-edit-end-time" type="text">
+                        <div class="uk-margin uk-width-1-3 uk-inline">
+                            <label class="uk-form-label" for="event-edit-start-time"> Event Start Time </label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input rounded" id="event-edit-start-time" type="text">
+                            </div>
                         </div>
-                    </div>
-                    <div class="uk-text-right">
-                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                        <button class="uk-button uk-button-primary uk-modal-close" type="button"
-                            id="event-edit-save-btn">Save Change</button>
-                    </div>
-                </form>
+                        <div class="uk-margin uk-width-1-3 uk-inline uk-margin-left">
+                            <label class="uk-form-label" for="event-edit-end-time">Event End Time <span
+                                    class="uk-text-muted"></label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input rounded" id="event-edit-end-time" type="text">
+                            </div>
+                        </div>
+                        <div class="uk-text-right">
+                            <button class="uk-button uk-button-default uk-modal-close rounded"
+                                type="button">Cancel</button>
+                            <button class="uk-button uk-button-primary uk-modal-close rounded" type="button"
+                                id="event-edit-save-btn">Save Change</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
 
+        </main>
         <aside class="uk-width-expand@l ">
             <!-- weather container  -->
-            <div class="uk-card uk-card-default uk-card-body uk-width-1-1@l uk-width-2-5@s " id="weather-div">
+            <div class="uk-card uk-card-default uk-card-body uk-width-1-1@l uk-width-2-5@s uk-padding uk-margin"
+                id="weather-div">
                 <h3 style="display: inline" class="uk-card-title"></h3>
-                <p></p>
-                <p></p>
-                <p></p>
+                <p class="uk-margin-small"></p>
+                <p class="uk-margin-small"></p>
+                <p class="uk-margin-small"></p>
 
-                <div class="uk-animation-fast uk-card uk-card-hover uk-card-default uk-position-top-right uk-position-small uk-padding-remove" id="button-card">
-                    <button class="uk-button uk-button-primary uk-margins-remove" id="forecast-button" uk-parallax="border-color: blue"><span uk-icon="icon: location" id="forecast-button-icon"></span></button>
+                <div class="uk-animation-fast uk-position-top-right uk-position-small " id="button-card">
+                    <button class="uk-card uk-button-primary uk-padding" id="forecast-button"
+                        uk-parallax="border-color: blue"><span uk-icon="icon: location"
+                            id="forecast-button-icon"></span></button>
                 </div>
-                <p class="uk-animation-shake uk-text-lead uk-text-large uk-text-muted " style="display: block;" id="location-instructions">Please "<i>Allow location</i>" for weather tool!</p>
+                <p class="uk-animation-shake uk-text-lead uk-text-muted " style="display: block;"
+                    id="location-instructions">Please "<i>Allow location</i>" for weather tool!</p>
             </div>
 
 
             <!-- news container  -->
 
-            <div class='uk-card uk-card-default uk-card-body uk-width-expand'>
+            <div class='uk-card uk-card-default uk-card-body uk-width-expand uk-padding'>
+                <h3> Daily News</h3>
+                <ul uk-tab>
+                    <li><a href="#">Top Stories</a></li>
+                    <li><a href="#">Favorites</a></li>
+                </ul>
+                <ul class="uk-switcher uk-margin">
+                    <li>
 
-                <h3 class="">Top Stories</h3>
+                        <dl id='news' class='news uk-description-list uk-description-list-divider'>
+                            <dt></dt>
+                            <dd><a class='artLink' id='artLink1'></a></dd>
+                            <dd><a uk-icon="star" id="favIcon1" class="iconStyle" style="float: right;"></a></dd>
+                            <dt></dt>
+                            <dd><a class='artLink' id='artLink2'></a></dd>
+                            <dd><a uk-icon="star" id="favIcon2" class="iconStyle" style="float: right;"></a></dd>
 
-                <dl id='news' class='news uk-description-list uk-description-list-divider'>
+                            <dt></dt>
+                            <dd><a class='artLink' id='artLink3'></a></dd>
+                            <dd><a uk-icon="star" id="favIcon3" class="iconStyle" style="float: right;"></a></dd>
+                            <dt></dt>
+                            <dd><a class='artLink' id='artLink4'></a></dd>
+                            <dd><a uk-icon="star" id="favIcon4" class="iconStyle" style="float: right;"></a></dd>
+                            <dt></dt>
+                            <dd><a class='artLink' id='artLink5'></a></dd>
+                            <dd><a uk-icon="star" id="favIcon5" class="iconStyle" style="float: right;"></a></dd>
+                        </dl>
+                    </li>
+                    <li>
 
-                    <dt>1.</dt>
-                    <dd><a class='artLink' id='artLink1'></a></dd>
+                        <dl id='favorites' class='news uk-description-list uk-description-list-divider'>
+                            <dt>1.</dt>
+                            <dd><a class='favLink' id='favLink1'></a></dd>
+                            <dt>2.</dt>
+                            <dd><a class='favLink' id='favLink2'></a></dd>
 
-                    <dt>2.</dt>
-                    <dd><a class='artLink' id='artLink2'></a></dd>
-                  
-                    <dt>3.</dt>
-                    <dd><a class='artLink' id='artLink3'></a></dd>
-
-                    <dt>4.</dt>
-                    <dd><a class='artLink' id='artLink4'></a></dd>
-
-                    <dt>5.</dt>
-                    <dd><a class='artLink' id='artLink5'></a></dd>
-
-                </dl>
-
+                            <dt>3.</dt>
+                            <dd><a class='favLink' id='favLink3'></a></dd>
+                            <dt>4.</dt>
+                            <dd><a class='favLink' id='artLink4'></a></dd>
+                            <dt>5.</dt>
+                            <dd><a class='favLink' id='favLink5'></a></dd>
+                        </dl>
+                    </li>
+                </ul>
             </div>
-
-
-
         </aside>
+
     </div>
 
     <!-- UIkit JS -->
