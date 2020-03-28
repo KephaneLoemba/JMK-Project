@@ -499,7 +499,7 @@ function getLocation() {
       PositionObject = position;
     });
   } else {
-    alert("Geolocation is not supported by this browser.");
+    document.getElementById("location-instructions").innerHTML = "<i>Geolocation</i> " + "is not supported by this browser.";
   }
 }
 
