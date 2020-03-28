@@ -18,7 +18,7 @@ Lastly, this application also includes a news section that will display the top 
 
 
 ## APIs and CSS Framework
-### CSS Framewokr
+### CSS Framework
  UIkit  Link : https://getuikit.com/
 ### API
 Open Weather API. Link : https://openweathermap.org/api
@@ -26,11 +26,24 @@ New York Times API.   Link : https://developer.nytimes.com/
 Google Calender API. Link : https://developers.google.com/calendar
 
 ## GIFs of the Application
+Responsiveness : 
 
+![](/Gifs/Responsive.gif)
 
+Calender : 
+
+![](/Gifs/Calender.gif)
+
+Weather : 
+
+![](/Gifs/Weather.gif)
+
+News : 
+
+![](/Gifs/News.gif)
 ## Github Pages
 Link : https://jlbuster.github.io/JMK-Project/
 
 ## Credits
-We would like to take the chance here to Robert, Igor and Abdul, who have been providing so much help to us throughout the project.
+We would like to take the chance here to thank Robert, Igor and Abdul, who have been providing so much help to us throughout the project.
 
