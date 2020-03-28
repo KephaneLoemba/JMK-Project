@@ -57,6 +57,10 @@ News :
 ## Github Pages
 Link : https://jlbuster.github.io/JMK-Project/
 
+## Google Docs
+This contains the wireframes, the mvp descriptions and some presentation preparation.
+Link : https://docs.google.com/document/d/1pxhA2OjXNL3t8oN4ZTcRXmvemgJwk7ypQDOcCccAE70/edit?usp=sharing
+
 ## Credits
 We would like to take this chance here to thank Robert, Igor and Abdul, who have been providing so much help to us throughout the project.
 
