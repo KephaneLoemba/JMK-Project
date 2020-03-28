@@ -25,7 +25,11 @@ let artLink5 = document.getElementById("artLink5");
 //added by Kephane
 let PositionObject;
 let firstPromise;
-
+let storedFavorites = []
+let memory = JSON.parse(localStorage.getItem('favorites'))
+if (memory) {
+  storedFavorites = memory
+}
 //js code by Mila
 // On load, called to load the auth2 library and API client library.
 function handleClientLoad() {
@@ -606,3 +610,74 @@ function displayNewsInfo() {
 }
 
 displayNewsInfo();
+displayFavoriteArticles();
+
+
+// Article favoriting  (JS by Kephane)
+
+  
+
+  
+
+for (let star of document.querySelectorAll(".iconStyle")) {
+
+  star.addEventListener("click", addToFavorites);
+}
+
+function addToFavorites() {
+  clearFavorites();
+  // Part 1: Grab the desired article's title and URL. store them in variables.
+  
+  let thisArticleTitle = this.parentElement.previousElementSibling.firstChild.textContent;
+  let thisArticleURL = this.parentElement.previousElementSibling.firstChild.href
+  // Part 2: add the selected article's title and URL to the favorites array.
+  console.log(storedFavorites)
+  storedFavorites.unshift([thisArticleTitle, thisArticleURL])
+  console.log(storedFavorites)
+  localStorage.setItem("favorites", JSON.stringify(storedFavorites));
+  
+  // Part 3: dynamically display the updated contents of Favorites array to the HTML
+
+  displayFavoriteArticles();
+
+  // Part 4: Add animation on click, for responsiveness.
+  let currentStarIcon = this
+  this.classList.add("uk-animation-scale-down");
+  setTimeout(function() {
+    currentStarIcon.classList.remove("uk-animation-scale-down");
+  }, 90);
+  
+}
+
+function displayFavoriteArticles () {
+  // Clear current diplay of favorites
+  clearFavorites();
+  // Display storedFavorites array.
+  let i = 0;
+  for (let thisFavorite of storedFavorites) {
+        if (i < 5){
+        // Grab all of the article slots in your favorites tab, and put them into an array.
+        let favoriteArticleSlots = document.getElementsByClassName("favLink");
+        // fill up each favorite slot with the information from localStorage.
+        
+        favoriteArticleSlots[i].href = thisFavorite[1]
+        favoriteArticleSlots[i].innerHTML = thisFavorite[0]
+        // Loop over this sequence, for each <a> tag that we selected.
+        i++
+        }
+  } 
+
+
+}
+
+function clearFavorites () {
+  
+  for (let favAtag of document.getElementsByClassName("favLink")) {
+
+    favAtag.innerHTML = "";
+  }
+
+}
+
+
+
