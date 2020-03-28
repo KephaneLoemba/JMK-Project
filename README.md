@@ -17,16 +17,28 @@ In addition, with this application, you will be able to review your daily shedul
 Lastly, this application also includes a news section that will display the top 5 article titles with their respective links from the New York Times website. This also includes a feature that allows you to favorite articles you enjoy.
 
 
-## APIs and CSS Framework
+## Technologies 
 ### CSS Framework
  UIkit  Link : https://getuikit.com/
+ 
+### Authorization Framework
+ OAuth 2.0 : https://developers.google.com/identity/protocols/oauth2 
+ 
 ### API
-Open Weather API. Link : https://openweathermap.org/api
-New York Times API.   Link : https://developer.nytimes.com/
-Google Calender API. Link : https://developers.google.com/calendar
+Open Weather API : https://openweathermap.org/api
+
+New York Times API : https://developer.nytimes.com/
+
+Google Calender API : https://developers.google.com/calendar
+
+Geolocation API : https://developers.google.com/maps/documentation/geolocation/intro
+
+
+
+
 
 ## GIFs of the Application
-Responsiveness : 
+Mobile layout : 
 
 ![](/Gifs/Responsive.gif)
 
@@ -41,9 +53,10 @@ Weather :
 News : 
 
 ![](/Gifs/News.gif)
+
 ## Github Pages
 Link : https://jlbuster.github.io/JMK-Project/
 
 ## Credits
-We would like to take the chance here to thank Robert, Igor and Abdul, who have been providing so much help to us throughout the project.
+We would like to take this chance here to thank Robert, Igor and Abdul, who have been providing so much help to us throughout the project.
 
